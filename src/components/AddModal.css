@@ -1,0 +1,68 @@
+#addModal {
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    padding: 3rem;
+    border-radius: 2rem;
+    box-shadow: 0 0 2rem rgba(0,0,0,0.3);
+}
+#addModal::backdrop {
+    background-image: radial-gradient( rgba(100,0,0,0.3), rgba(0,0,0,0.3));
+} 
+#addModal form {
+    display: flex;
+    flex-direction: column;
+    line-height: 2;
+}
+#famId {
+    width: 3rem;
+}
+#addModal input {
+    margin: 0 4px 0.5rem;
+    padding: 2px 4px;
+} 
+#addModal .bold {
+    font-weight: 800;
+}
+.memberGrade {
+    width: 3rem;
+}
+.memberName {
+    width: 8rem;
+} 
+#addModal .formTitle {
+    text-align: center;
+}
+#addModal .hint {
+    text-align: center;
+    display: block;
+    color: grey;
+}
+#addModal button {
+    padding: 0.2rem 3rem;
+    margin: 0.5rem auto;
+    border-radius: 1rem;
+    background-color: grey;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#addModalCancel {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    border: 1px solid black;
+    background-color: grey;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.3) inset;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+#addModalCancel:hover,
+#addModal button:hover {
+    scale: 1.1;
+    background-color: red;
+}

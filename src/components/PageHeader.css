@@ -1,0 +1,10 @@
+#pageHeader {
+    position: relative;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 2rem;
+    border-bottom: 4px double red;
+    padding: 1rem;
+    text-align: right;
+}
