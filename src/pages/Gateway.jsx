@@ -10,7 +10,7 @@ export default function Gateway() {
     const [auth, setAuth] = useState(false)
 
     function getAuth(credentials) {
-    axios.post("http://localhost:5000/families/login", credentials)
+    axios.post("https://ride-call-maa.herokuapp.com/families/login", credentials)
         .then(res => {res.data.auth === "authorized" && setAuth(true);})
         .catch(err => {
             console.log("Error in login process:", err)
@@ -43,7 +43,7 @@ export default function Gateway() {
             user: e.target.user.value,
             pass: e.target.pass.value
         }
-        axios.post("http://localhost:5000/families/login", creds)
+        axios.post("https://ride-call-maa.herokuapp.com/families/login", creds)
             .then(res => {
                 console.log(res.data)
                 if (res.data.auth === "authorized") {

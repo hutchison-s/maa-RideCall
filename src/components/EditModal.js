@@ -17,7 +17,7 @@ export default function EditModal({callback, family}) {
     for (let i = 0; i < 4; i++) {
       names[i].value != "" && updatedFam.members.push({name: names[i].value, grade: grades[i].value === "K" ? "K" : parseInt(grades[i].value, 10)})
     }
-    fetch("http://localhost:5000/families/update/"+id, {
+    fetch("https://ride-call-maa.herokuapp.com/families/update/"+id, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
