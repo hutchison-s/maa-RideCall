@@ -14,7 +14,7 @@ export default function AddModal({callback}) {
       dateCalled: ""
     }
     for (let i = 0; i < 4; i++) {
-      names[i].value != "" && updatedFam.members.push({name: names[i].value, grade: grades[i].value === "K" ? "K" : parseInt(grades[i].value, 10)})
+      names[i].value !== "" && updatedFam.members.push({name: names[i].value, grade: grades[i].value === "K" ? "K" : parseInt(grades[i].value, 10)})
     }
     fetch("https://ride-call-maa.herokuapp.com/families/add", {
       method: 'POST',

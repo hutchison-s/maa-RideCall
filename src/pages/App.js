@@ -7,18 +7,18 @@ import LogoLoader from "../components/LogoLoader";
 
 function App() {
   const [familyData, setFamilyData] = useState(null);
-  const [ids, setIDs] = useState([]);
+  // const [ids, setIDs] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
   function getFamilies() {
     fetch("https://ride-call-maa.herokuapp.com/families")
       .then((response) => response.json())
       .then((body) => {
-        const availableIDs = [];
-        for (let x of body) {
-          availableIDs.push(x.id);
-        }
-        setIDs(availableIDs);
+        // const availableIDs = [];
+        // for (let x of body) {
+        //   availableIDs.push(x.id);
+        // }
+        // setIDs(availableIDs);
         setFamilyData(body);
       })
       .catch((err) => {
