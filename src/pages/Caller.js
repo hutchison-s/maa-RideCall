@@ -63,7 +63,17 @@ export default function Caller() {
 
   useEffect(() => {
     getFamilies();
-  }, []);
+    setInterval(()=>{
+      const called = familyData.filter(fam => fam.dateCalled === new Date().toDateString());
+      let get = false;
+      for (const fam of called) {
+        if (fam.members.some(kid => (kid.dateCollected !== new Date().toDateString()))) {
+          get = true;
+        }
+      }
+      get && getFamilies()
+    }, [10000]);
+  })
 
   return (
     <>
