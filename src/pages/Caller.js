@@ -27,6 +27,7 @@ export default function Caller() {
         Accept: "application/json",
         "Content-Type": "application/json; charset=UTF-8",
       },
+      body: JSON.stringify({date: new Date().toDateString()})
     })
       .then((response) => {
         console.log(response);

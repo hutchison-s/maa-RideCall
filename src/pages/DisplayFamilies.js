@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import PageHeader from "../components/PageHeader";
 import KidMapDisplay from "../components/KidMapDisplay";
+import './DisplayFamilies.css'
 
 const titles = {
   "K,0": "Kindergarten",
@@ -66,7 +67,7 @@ export default function DisplayFamilies() {
         <option value="7,8">7-8</option>
       </select>
       {familyData && room && (
-        <KidMapDisplay onDoubleClick={null} room={room} data={familyData} />
+        <KidMapDisplay room={room} data={familyData} />
       )}
     </>
   );

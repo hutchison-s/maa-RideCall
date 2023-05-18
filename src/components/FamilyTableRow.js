@@ -3,7 +3,7 @@ import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 export default function FamilyTableRow({fam, setSelectedFam, deleteFamily}) {
     return (
-        <tr>
+        <tr className='dataTableRow'>
           <td className='dataTableId'>{fam.id}</td>
           <td>{fam.lastName}</td>
           <td className='tableCell'>

@@ -1,0 +1,24 @@
+.calledStudent {
+    flex: 0 0 200px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 2rem;
+    border: 4px solid red;
+    user-select: none;
+    cursor: pointer;
+    animation: stoplight 240s linear both;
+  }
+  .calledStudent.collected,
+  .calledStudent:has(.collected) {
+    background-color: white;
+    animation: none;
+    opacity: 0.4;
+  }
+  
+  @keyframes stoplight {
+    0%, 49% {background-color: rgb(128, 211, 128);}
+    50%, 99% {background-color: rgb(241, 232, 101);}
+    100% {background-color: rgb(253, 108, 108);}
+  }

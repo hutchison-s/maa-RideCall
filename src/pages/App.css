@@ -32,6 +32,9 @@ input:active {
   flex-wrap: wrap;
   height: 80%;
 }
+.dataTableRow:hover {
+  background-color: rgb(247, 240, 219);
+}
 .cellFlex {
   display: flex;
   justify-content: space-evenly;
@@ -94,12 +97,4 @@ section {
   justify-content: center;
   align-items: baseline;
 }
-.family {
-  flex: 0 0 200px;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  border: 4px solid red;
-  padding: 5px 10px;
-  border-radius: 2rem
-}
+
