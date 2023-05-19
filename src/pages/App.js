@@ -26,6 +26,18 @@ function App() {
       });
   }
 
+  function upGrade() {
+    for (const fam of familyData) {
+      fetch("https://ride-call-maa.herokuapp.com/families/upgrade/"+fam.id, {headers: {'Authorization': JSON.parse(sessionStorage.getItem("rideCallKey"))}})
+        .then(res => res.json())
+        .then(body => {
+          console.log(body)
+        })
+        .catch(err => console.log(err))
+    }
+    getFamilies()
+  }
+
   useEffect(() => {
     getFamilies();
   }, []);
@@ -33,6 +45,10 @@ function App() {
   return (
     <div className="App">
       <PageHeader title="MAA Ride Call Database Management" />
+      <label style={{backgroundColor: 'red', color: 'white', position: 'fixed', bottom: '2px', right: '2px'}}>
+        Warning! Clicking button alters database irreversibly: 
+        <button style={{backgroundColor: 'white', color: 'red', border: '1px solid red', cursor: 'pointer'}} onClick={upGrade}>Up-Grade</button>
+      </label>
       <section className="flexReg">
         <div id="search" style={{ flex: "100%", textAlign: "center" }}>
           <label htmlFor="nameSearch">Search by Last Name:</label>
