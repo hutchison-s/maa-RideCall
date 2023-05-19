@@ -11,7 +11,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
 
   function getFamilies() {
-    fetch("https://ride-call-maa.herokuapp.com/families")
+    fetch("https://ride-call-maa.herokuapp.com/families", {headers: {'Authorization': JSON.parse(sessionStorage.getItem("rideCallKey"))}})
       .then((response) => response.json())
       .then((body) => {
         // const availableIDs = [];

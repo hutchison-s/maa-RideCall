@@ -10,8 +10,11 @@ export default function Gateway() {
     const [auth, setAuth] = useState(false)
 
     function getAuth(credentials) {
-    axios.post("https://ride-call-maa.herokuapp.com/families/login", credentials)
-        .then(res => {res.data.auth === "authorized" && setAuth(true);})
+    axios.post("https://ride-call-maa.herokuapp.com/login", credentials)
+        .then(res => {
+            res.data.auth === "authorized" && setAuth(true);
+            sessionStorage.setItem("rideCallKey", JSON.stringify("Basic "+res.data.key))
+        })
         .catch(err => {
             console.log("Error in login process:", err)
         })
@@ -43,12 +46,13 @@ export default function Gateway() {
             user: e.target.user.value,
             pass: e.target.pass.value
         }
-        axios.post("https://ride-call-maa.herokuapp.com/families/login", creds)
+        axios.post("https://ride-call-maa.herokuapp.com/login", creds)
             .then(res => {
                 console.log(res.data)
                 if (res.data.auth === "authorized") {
                     setAuth(true);
                     sessionStorage.setItem("gatewayAuth", JSON.stringify(creds))
+                    sessionStorage.setItem("rideCallKey", JSON.stringify("Basic "+res.data.key))
                 } else {
                     e.target.classList.add("wrong");
                     setTimeout(()=>{
