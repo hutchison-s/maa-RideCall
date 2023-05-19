@@ -14,6 +14,7 @@ export default function KidMapDisplay ({room, data}) {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json; charset=UTF-8",
+        'Authorization': JSON.parse(sessionStorage.getItem("rideCallKey"))
       },
       body: JSON.stringify({
         name: name,

@@ -7,7 +7,7 @@ export default function Caller() {
   const [familyData, setFamilyData] = useState([]);
 
   function getFamilies() {
-    fetch("https://ride-call-maa.herokuapp.com/families")
+    fetch("https://ride-call-maa.herokuapp.com/families", {headers: {'Authorization': JSON.parse(sessionStorage.getItem("rideCallKey"))}})
       .then((response) => response.json())
       .then((body) => {
         setFamilyData(body);
@@ -26,6 +26,7 @@ export default function Caller() {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json; charset=UTF-8",
+        'Authorization': JSON.parse(sessionStorage.getItem("rideCallKey"))
       },
       body: JSON.stringify({date: new Date().toDateString()})
     })
@@ -50,6 +51,7 @@ export default function Caller() {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json; charset=UTF-8",
+        'Authorization': JSON.parse(sessionStorage.getItem("rideCallKey"))
       },
     })
       .then((response) => {

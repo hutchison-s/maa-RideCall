@@ -21,7 +21,8 @@ export default function EditModal({callback, family}) {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json; charset=UTF-8'
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': JSON.parse(sessionStorage.getItem("rideCallKey"))
       },
       body: JSON.stringify(updatedFam)
     })

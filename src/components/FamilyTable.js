@@ -25,6 +25,7 @@ export default function FamilyTable({ getFamilies, familyData, filterQuery }) {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json; charset=UTF-8",
+        'Authorization': JSON.parse(sessionStorage.getItem("rideCallKey"))
       },
     })
       .then((res) => {
