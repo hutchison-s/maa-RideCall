@@ -9,7 +9,7 @@ export default function KidMapDisplay ({room, data}) {
   }
     function onDoubleClick(e, id, name) {
       e.target.classList.add("collected");
-      fetch("https://ride-call-maa.herokuapp.com/families/collect/" + id, {
+      fetch("https://maa-rides-backend.onrender.com/families/collect/" + id, {
       method: "POST",
       headers: {
         Accept: "application/json",

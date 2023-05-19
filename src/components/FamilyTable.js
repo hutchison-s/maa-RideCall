@@ -20,7 +20,7 @@ export default function FamilyTable({ getFamilies, familyData, filterQuery }) {
           ).innerHTML
         : e.target.parentNode.parentNode.querySelector(".dataTableId")
             .innerHTML;
-    fetch("https://ride-call-maa.herokuapp.com/families/" + id, {
+    fetch("https://maa-rides-backend.onrender.com/families/" + id, {
       method: "DELETE",
       headers: {
         Accept: "application/json",

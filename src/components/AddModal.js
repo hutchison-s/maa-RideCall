@@ -16,7 +16,7 @@ export default function AddModal({callback}) {
     for (let i = 0; i < 4; i++) {
       names[i].value !== "" && updatedFam.members.push({name: names[i].value, grade: grades[i].value === "K" ? "K" : parseInt(grades[i].value, 10)})
     }
-    fetch("https://ride-call-maa.herokuapp.com/families/add", {
+    fetch("https://maa-rides-backend.onrender.com/families/add", {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
