@@ -9,6 +9,7 @@ function App() {
   const [familyData, setFamilyData] = useState(null);
   // const [ids, setIDs] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [areToolsVisible, setAreToolsVisible] = useState(false)
 
   function getFamilies() {
     fetch("https://maa-rides-backend.onrender.com/families", {headers: {'Authorization': JSON.parse(sessionStorage.getItem("rideCallKey"))}})
@@ -39,7 +40,23 @@ function App() {
         })
         .catch(err => console.log(err))
     }
-    getFamilies()
+    setTimeout(getFamilies, 5000)
+  }
+  function removeBlanks() {
+    for (const fam of familyData) {
+      if (fam.members.length === 0) {
+        fetch("https://maa-rides-backend.onrender.com/families/"+fam.id, {
+          method: 'DELETE', 
+          headers: {'Authorization': JSON.parse(sessionStorage.getItem("rideCallKey"))}
+        })
+          .then(res => res.json())
+          .then(body => {
+            console.log(body)
+          })
+          .catch(err => console.log(err))
+        }
+      }
+    setTimeout(getFamilies, 5000)
   }
 
   useEffect(() => {
@@ -49,10 +66,6 @@ function App() {
   return (
     <div className="App">
       <PageHeader title="MAA Ride Call Database Management" />
-      <label style={{backgroundColor: 'red', color: 'white', position: 'fixed', bottom: '2px', right: '2px'}}>
-        Warning! Clicking button alters database irreversibly:
-        <button style={{backgroundColor: 'white', color: 'red', border: '1px solid red', cursor: 'pointer'}} onClick={upGrade}>Up-Grade</button>
-      </label>
       <section className="flexReg">
         <div id="search" style={{ flex: "100%", textAlign: "center" }}>
           <label htmlFor="nameSearch">Search by Last Name:</label>
@@ -85,6 +98,16 @@ function App() {
           )) || <LogoLoader />}
         </div>
       </section>
+      <footer>
+        <button id='dangerToggle' onClick={()=>{
+          setAreToolsVisible(!areToolsVisible)
+        }}>Toggle Danger Zone</button>
+        <div className={`${!areToolsVisible ? "hidden" : ""} adminWarn`}>
+          <h3>!Warning! - Clicking buttons alters database irreversibly - !Warning!</h3>
+          <button style={{backgroundColor: 'white', color: 'red', border: '1px solid red', cursor: 'pointer'}} onClick={removeBlanks}>Remove families without students</button>
+          <button style={{backgroundColor: 'white', color: 'red', border: '1px solid red', cursor: 'pointer'}} onClick={upGrade}>Advance all students by one grade</button>
+        </div>
+      </footer>
     </div>
   );
 }
