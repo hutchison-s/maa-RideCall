@@ -5,6 +5,7 @@ import DisplayFamilies from '../pages/DisplayFamilies';
 import Caller from '../pages/Caller';
 import { useState, useEffect } from 'react';
 import './Gateway.css'
+import PrintNumbers from './PrintNumbers';
 
 export default function Gateway() {
     const [auth, setAuth] = useState(false)
@@ -37,6 +38,10 @@ export default function Gateway() {
     {
         path: "/caller",
         element: auth ? <Caller /> : <Gateway auth={auth} setAuth={setAuth} />
+    },
+    {
+        path: "/print",
+        element: auth ? <PrintNumbers /> : <Gateway auth={auth} setAuth={setAuth} />
     }
     ]);
 

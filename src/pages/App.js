@@ -4,6 +4,8 @@ import AddModal from "../components/AddModal";
 import FamilyTable from "../components/FamilyTable";
 import PageHeader from "../components/PageHeader";
 import LogoLoader from "../components/LogoLoader";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPrint } from '@fortawesome/free-solid-svg-icons'
 
 function App() {
   const [familyData, setFamilyData] = useState(null);
@@ -78,10 +80,6 @@ function App() {
   return (
     <div className="App">
       <PageHeader title="MAA Ride Call Database Management" />
-      <label style={{backgroundColor: 'red', color: 'white', position: 'fixed', bottom: '2px', right: '2px'}}>
-        Warning! Clicking button alters database irreversibly: 
-        <button style={{backgroundColor: 'white', color: 'red', border: '1px solid red', cursor: 'pointer'}} onClick={upGrade}>Up-Grade</button>
-      </label>
       <section className="flexReg">
         <div id="search" style={{ flex: "100%", textAlign: "center" }}>
           <label htmlFor="nameSearch">Search by Last Name:</label>
@@ -101,6 +99,7 @@ function App() {
           >
             Add Family
           </button>
+          <button id='printBtn'><a href='/print/' target='_blank'><FontAwesomeIcon icon={faPrint} /></a></button>
           <hr></hr>
         </div>
         <AddModal callback={getFamilies} />

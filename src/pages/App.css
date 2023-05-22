@@ -27,6 +27,12 @@ input:active {
   color: white;
   scale: 1.1;
 }
+#printBtn {
+  position: absolute;
+  right: 2rem;
+  top: 18vh;
+  scale: 1.5;
+}
 .flexReg {
   display: flex;
   flex-wrap: wrap;
