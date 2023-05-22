@@ -29,18 +29,6 @@ function App() {
       });
   }
 
-  function upGrade() {
-    for (const fam of familyData) {
-      fetch("https://ride-call-maa.herokuapp.com/families/upgrade/"+fam.id, {headers: {'Authorization': JSON.parse(sessionStorage.getItem("rideCallKey"))}})
-        .then(res => res.json())
-        .then(body => {
-          console.log(body)
-        })
-        .catch(err => console.log(err))
-    }
-    getFamilies()
-  }
-
   useEffect(() => {
     getFamilies();
   }, []);
@@ -54,7 +42,7 @@ function App() {
         })
         .catch(err => console.log(err))
     }
-    setTimeout(getFamilies, 5000)
+    setTimeout(getFamilies, 3000)
   }
   function removeBlanks() {
     for (const fam of familyData) {
