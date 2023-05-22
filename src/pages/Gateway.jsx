@@ -10,7 +10,7 @@ export default function Gateway() {
     const [auth, setAuth] = useState(false)
 
     function getAuth(credentials) {
-    axios.post("https://ride-call-maa.herokuapp.com/login", credentials)
+    axios.post("https://maa-rides-backend.onrender.com/login", credentials)
         .then(res => {
             res.data.auth === "authorized" && setAuth(true);
             sessionStorage.setItem("rideCallKey", JSON.stringify("Basic "+res.data.key))
@@ -46,7 +46,7 @@ export default function Gateway() {
             user: e.target.user.value,
             pass: e.target.pass.value
         }
-        axios.post("https://ride-call-maa.herokuapp.com/login", creds)
+        axios.post("https://maa-rides-backend.onrender.com/login", creds)
             .then(res => {
                 console.log(res.data)
                 if (res.data.auth === "authorized") {

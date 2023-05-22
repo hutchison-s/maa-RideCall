@@ -5,8 +5,8 @@
 
 .App {
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
+  padding-bottom: 30px;
 }
 input:hover,
 input:focus,
@@ -30,7 +30,7 @@ input:active {
 .flexReg {
   display: flex;
   flex-wrap: wrap;
-  height: 80%;
+  height: 80vh;
 }
 .dataTableRow:hover {
   background-color: rgb(247, 240, 219);
@@ -86,7 +86,9 @@ table table {
   border-collapse: collapse;
   width: 100%;
 }
-
+.hidden {
+  display: none !important;
+}
 
 section {
   padding: 20px;
@@ -97,4 +99,31 @@ section {
   justify-content: center;
   align-items: baseline;
 }
-
+footer {
+  width: 100%;
+  margin: 10vh 0 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  gap: 1rem;
+}
+footer .adminWarn {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  gap: 1rem;
+  transition: all 0.2s;
+  padding: 1rem;
+}
+footer .adminWarn:hover {
+  background-color: red;
+  color: white;
+}
+footer h3,
+#dangerToggle {
+  flex: 100%;
+  margin: 0;
+}

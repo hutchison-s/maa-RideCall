@@ -7,7 +7,7 @@ export default function Caller() {
   const [familyData, setFamilyData] = useState([]);
 
   function getFamilies() {
-    fetch("https://ride-call-maa.herokuapp.com/families", {headers: {'Authorization': JSON.parse(sessionStorage.getItem("rideCallKey"))}})
+    fetch("https://maa-rides-backend.onrender.com/families", {headers: {'Authorization': JSON.parse(sessionStorage.getItem("rideCallKey"))}})
       .then((response) => response.json())
       .then((body) => {
         setFamilyData(body);
@@ -21,7 +21,7 @@ export default function Caller() {
     e.preventDefault();
     let element = document.getElementById("rideCallInput");
     let id = element.value;
-    fetch("https://ride-call-maa.herokuapp.com/families/call/" + id, {
+    fetch("https://maa-rides-backend.onrender.com/families/call/" + id, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -46,7 +46,7 @@ export default function Caller() {
       element.tagName === "div"
         ? element.querySelector(".idTag").innerHTML
         : element.parentNode.querySelector(".idTag").innerHTML;
-    fetch("https://ride-call-maa.herokuapp.com/families/uncall/" + id, {
+    fetch("https://maa-rides-backend.onrender.com/families/uncall/" + id, {
       method: "POST",
       headers: {
         Accept: "application/json",

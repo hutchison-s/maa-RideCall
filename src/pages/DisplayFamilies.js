@@ -16,7 +16,7 @@ export default function DisplayFamilies() {
   const [room, setRoom] = useState(null);
 
   function getFamilies() {
-    fetch("https://ride-call-maa.herokuapp.com/families", {headers: {'Authorization': JSON.parse(sessionStorage.getItem("rideCallKey"))}})
+    fetch("https://maa-rides-backend.onrender.com/families", {headers: {'Authorization': JSON.parse(sessionStorage.getItem("rideCallKey"))}})
       .then((response) => response.json())
       .then((body) => {
         const kidsList = [];
