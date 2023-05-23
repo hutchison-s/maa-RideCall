@@ -1,7 +1,7 @@
 import './EditModal.css';
 import { useEffect } from 'react';
 
-export default function EditModal({callback, family}) {
+export default function EditModal({callback, family, ids}) {
   
   function editFamily(e) {
     e.preventDefault();
@@ -52,7 +52,10 @@ export default function EditModal({callback, family}) {
             <h2 className='formTitle'>Edit a Family:</h2>
             <form method='dialog' onSubmit={editFamily} onClose={()=>{document.getElementById("editModal").reset()}}>
                 <label className='bold'>ID:
-                  <input id='editfamId' name="id" maxLength='3'/>
+                  <select id='editfamId' name="id">
+                    <option value={family.id}>{family.id}</option>
+                    {ids.map(id => (<option key={id} value={id}>{id}</option>))}
+                  </select>
                 </label>
                 <label className='bold'>Last Name:<input id="editfamName" name='famName' /></label>
                 <div className='membersBox'>

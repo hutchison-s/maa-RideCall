@@ -9,7 +9,7 @@ const blankFam = {
   dateCalled: null,
 };
 
-export default function FamilyTable({ getFamilies, familyData, filterQuery }) {
+export default function FamilyTable({ getFamilies, familyData, filterQuery, ids }) {
   const [selectedFam, setSelectedFam] = useState(blankFam);
 
   function deleteFamily(e) {
@@ -50,7 +50,7 @@ export default function FamilyTable({ getFamilies, familyData, filterQuery }) {
     ));
   return (
     <>
-      <EditModal callback={getFamilies} family={selectedFam} />
+      <EditModal callback={getFamilies} family={selectedFam} ids={ids}/>
       <table className="databaseTable">
         <thead>
           <tr>

@@ -9,7 +9,7 @@ import { faPrint } from '@fortawesome/free-solid-svg-icons'
 
 function App() {
   const [familyData, setFamilyData] = useState(null);
-  // const [ids, setIDs] = useState([]);
+  const [ids, setIDs] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [areToolsVisible, setAreToolsVisible] = useState(false)
 
@@ -17,11 +17,16 @@ function App() {
     fetch("https://maa-rides-backend.onrender.com/families", {headers: {'Authorization': JSON.parse(sessionStorage.getItem("rideCallKey"))}})
       .then((response) => response.json())
       .then((body) => {
-        // const availableIDs = [];
-        // for (let x of body) {
-        //   availableIDs.push(x.id);
-        // }
-        // setIDs(availableIDs);
+        const availableIDs = [];
+        for (let x = 10; x<100; x++) {
+          availableIDs.push(x);
+        }
+        for (const fam of body) {
+          if (availableIDs.includes(fam.id)) {
+            availableIDs.splice(availableIDs.indexOf(fam.id), 1);
+          }
+        }
+        setIDs(availableIDs);
         setFamilyData(body);
       })
       .catch((err) => {
@@ -90,13 +95,14 @@ function App() {
           <button id='printBtn'><a href='/print/' target='_blank'><FontAwesomeIcon icon={faPrint} /></a></button>
           <hr></hr>
         </div>
-        <AddModal callback={getFamilies} />
+        <AddModal ids={ids} callback={getFamilies} />
         <div className="tableContainer">
           {(familyData && (
             <FamilyTable
               getFamilies={getFamilies}
               familyData={familyData}
               filterQuery={searchQuery}
+              ids={ids}
             />
           )) || <LogoLoader />}
         </div>

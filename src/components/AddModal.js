@@ -1,5 +1,5 @@
 import './AddModal.css';
-export default function AddModal({callback}) {
+export default function AddModal({ids, callback}) {
   
   function addFamily(e) {
     e.preventDefault();
@@ -41,7 +41,9 @@ export default function AddModal({callback}) {
             <h2 className='formTitle'>Add a Family:</h2>
             <form method='dialog' onSubmit={addFamily} onClose={()=>{document.getElementById("addModal").reset()}}>
                 <label className='bold'>ID:
-                  <input id='famId' name="id" maxLength='3'/>
+                  <select id='famId' name="id">
+                    {ids.map(id => (<option key={id} value={id}>{id}</option>))}
+                  </select>
                 </label>
                 <label className='bold'>Last Name:<input id="famName" name='famName' /></label>
                 <div className='membersBox'>

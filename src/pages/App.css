@@ -58,6 +58,8 @@ input:active {
 .tableContainer {
   flex: 3;
   height: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
   overflow-x: hidden;
   overflow-y: auto;
   border: 2px double black;
@@ -87,6 +89,11 @@ tr {
 }
 th {
   min-width: 50px;
+}
+.databaseTable>tbody>tr>td:first-of-type,
+.databaseTable>thead>tr>th:first-of-type,
+.databaseTable>thead>tr>th:last-of-type {
+  text-align: center;
 }
 table table {
   border-collapse: collapse;
